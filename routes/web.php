@@ -6,6 +6,7 @@ use \App\Http\Livewire\GamePlatform;
 use \App\Http\Livewire\ShopComponent;
 use \App\Http\Livewire\CartComponent;
 use \App\Http\Livewire\CheckoutComponent;
+use \App\Http\Livewire\DetailsComponent;
 
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
@@ -32,6 +33,7 @@ Route::get('/', GamePlatform::class);
 Route::get('/shop', ShopComponent::class);
 Route::get('/cart', CartComponent::class);
 Route::get('/checkout', CheckoutComponent::class);
+Route::get('/product/{slug}', DetailsComponent::class)->name('product.details');
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');
