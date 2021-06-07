@@ -38,6 +38,8 @@
 
 - Shop頁面商品排序功能(價錢，顯示數量)
 
+- admin-category畫面
+
 
 
 
