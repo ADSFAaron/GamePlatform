@@ -28,15 +28,15 @@
 - Detail 頁面商品內容和其他資訊、popular product、related product 搞定
 
 ## 2021-06-07 (by black)
-- 進到Cart頁面
+- 進到Cart頁面，Cart基本功能搞定
 - vendor需更新資料 開CMD在GamePlatform資料夾指令：(1)composer require hardevine/shoppingcart    
 (2)php artisan vendor:publish --provider="Gloudeman\ShoppingcartServiceProvider" --tag="config"
 
-- Cart頁面商品數量加減
-
-- Cart商品刪除功能
-
 - Shop頁面商品排序功能(價錢，顯示數量)
+
+- admin-category畫面
+
+- Category可使用畫面可更新
 
 
 
