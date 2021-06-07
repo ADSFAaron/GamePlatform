@@ -17,6 +17,13 @@
 - 網頁整合登入
 
 ## 2021-06-05
+
+## 2021-06-07
+- 進到Cart頁面，修改Cart頁面擷取資料庫code
+-vendor需更新資料 開CMD在GamePlatform指令：(1)composer require hardevine/shoppingcart    
+(2)php artisan vendor:publish --provider="Gloudeman\ShoppingcartServiceProvider" --tag="config"
+
+
 - 
 
 
