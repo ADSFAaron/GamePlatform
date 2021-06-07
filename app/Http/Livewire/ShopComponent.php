@@ -8,6 +8,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Cart;
 
+
 class ShopComponent extends Component
 {
     public $sorting;
@@ -30,6 +31,7 @@ class ShopComponent extends Component
 
     public function render()
     {
+        //商品頁面顯示依據function
         if ($this->sorting == 'date') {
             $products = Product::orderBy('created_at', 'DESC')->paginate($this->pagesize);
         } else if ($this->sorting == "price") {
