@@ -18,13 +18,24 @@
 
 ## 2021-06-05
 
+=======
+- Shop 頁面已經可以正常運行
+- Register 已完成
+
+## 2021-06-06
+- Shop 頁面可以動態產生
+- 可以產生每個產品的細部頁面
+
 ## 2021-06-07
-- 進到Cart頁面，修改Cart頁面擷取資料庫code
--vendor需更新資料 開CMD在GamePlatform指令：(1)composer require hardevine/shoppingcart    
+- Detail 頁面商品內容和其他資訊、popular product、related product 搞定
+
+## 2021-06-07
+- 進到Cart頁面
+- vendor需更新資料 開CMD在GamePlatform資料夾指令：(1)composer require hardevine/shoppingcart    
 (2)php artisan vendor:publish --provider="Gloudeman\ShoppingcartServiceProvider" --tag="config"
 
 
-- 
+>>>>>>> fa49a8611402a3d99af13165f18827c388db263a
 
 
 # 重要檔案
@@ -41,6 +52,7 @@
 11. GamePlatform\vendor\laravel\fortify\src\Actions\AttemptToAuthenticate.php：增加登入時用的 Session
 12. GamePlatform\app\Actions\Fortify\CreateNewUser.php：管理註冊時要增加到 mysql 的資料
 13. GamePlatform\app\Models\User.php：註冊時增加的欄位，這裡也要加，不然 sql 根本讀不到
+14. GamePlatform\database\seeders\DatabaseSeeder.php：產生資料用
 
 ## 啟動網頁
 ```
@@ -57,6 +69,7 @@ php artisan make:livewire 網頁名(會在重要檔案的6. 7.底下)
 > The whole world belongs to you.
 > If your happiness depends on money, you will never be happy with yourself.
 > Stop trying to control.
+> Nothing in the world is as soft and yielding as water.
 > 
 
 
