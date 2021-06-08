@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flexslider.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css') }}">
     @livewireStyles
+    @livewireScripts
 </head>
 <body class="home-page home-01 ">
 

@@ -38,11 +38,7 @@
 
 - Category可使用畫面可更新
 
-<<<<<<< HEAD
-=======
 - admin-Prdoct畫面顯示 
-
->>>>>>> 389a4f4e61b25c0a45eefdb8bcab81fa03f24e6e
 
 
 
@@ -82,8 +78,6 @@ php artisan make:livewire 網頁名(會在重要檔案的6. 7.底下)
 
 
 ## 密碼加密方式
-<<<<<<< HEAD
 **128-bit SSL encryption**
-=======
-**128-bit SSL encryption**
->>>>>>> 389a4f4e61b25c0a45eefdb8bcab81fa03f24e6e
+
+
