@@ -38,8 +38,9 @@
 
 - Category可使用畫面可更新
 
-- admin-Prdoct畫面顯示 
+- AddCategory增加種類
 
+- admin-Prdoct畫面顯示 
 
 
 # 重要檔案
