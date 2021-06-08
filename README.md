@@ -38,6 +38,8 @@
 
 - Category可使用畫面可更新
 
+- admin-Prdoct畫面顯示 
+
 
 
 
