@@ -1,9 +1,10 @@
 <div>
     <style>
-        nav svg{
+        nav svg {
             height: 20px;
         }
-        nav .hidden{
+
+        nav .hidden {
             display: block !important;
         }
     </style>
@@ -12,18 +13,14 @@
             <div class="col-md-12">
                 <div class="panel panel-dafault">
                     <div class="panel-heading">
-<<<<<<< HEAD
                         <div class="row">
-                        <div class="col-md-6">
-                        All Categories
+                            <div class="col-md-6">
+                                All Categories
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{{route('admin.addcategory')}}" class="btn btn-success pull-right">Add New</a>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                        <a href="{{route('admin.addcategory')}}" class="btn btn-success pull-right">Add New</a>
-                        </div>
-                        </div>
-=======
-                        All Categories
->>>>>>> 389a4f4e61b25c0a45eefdb8bcab81fa03f24e6e
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
@@ -37,12 +34,12 @@
                             </thead>
                             <tbody>
                                 @foreach ($categories as $category)
-                                    <tr>
-                                        <td>{{$category->id}}</td>
-                                        <td>{{$category->name}}</td>
-                                        <td>{{$category->slug}}</td>
-                                        <td></td>
-                                    </tr>
+                                <tr>
+                                    <td>{{$category->id}}</td>
+                                    <td>{{$category->name}}</td>
+                                    <td>{{$category->slug}}</td>
+                                    <td></td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
