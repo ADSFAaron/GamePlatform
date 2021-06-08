@@ -12,6 +12,7 @@
             <div class="col-md-12">
                 <div class="panel panel-dafault">
                     <div class="panel-heading">
+<<<<<<< HEAD
                         <div class="row">
                         <div class="col-md-6">
                         All Categories
@@ -20,6 +21,9 @@
                         <a href="{{route('admin.addcategory')}}" class="btn btn-success pull-right">Add New</a>
                         </div>
                         </div>
+=======
+                        All Categories
+>>>>>>> 389a4f4e61b25c0a45eefdb8bcab81fa03f24e6e
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
