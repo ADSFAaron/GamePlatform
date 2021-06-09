@@ -43,7 +43,7 @@
 - admin-Prdoct畫面顯示
 
 ## 2021-06-09 (by black)
-- EditCategory功能及頁面 done
+- EditCategory功能及頁面 + delete功能 done
 
 
 # 重要檔案
