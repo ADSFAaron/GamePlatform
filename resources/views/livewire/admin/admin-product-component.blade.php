@@ -1,10 +1,11 @@
 <div>
-    //Admin Product頁面css
+    {{-- Admin Product頁面css --}}
     <style>
-        nav svg{
+        nav svg {
             height: 20px;
         }
-        nav .hidden{
+
+        nav .hidden {
             display: block !important;
         }
     </style>
@@ -17,21 +18,22 @@
                 <div class="panel-body">
                     <table class="table table-striped">
                         <thead>
-                            <tr>
-                                <td>Id</td>
-                                <td>Image</td>
-                                <td>Name</td>
-                                <td>Stock</td>
-                                <td>Price</td>
-                                <td>Category</td>
-                                <td>Date</td>
-                                <td>Action</td>
-                            </tr>
+                        <tr>
+                            <td>Id</td>
+                            <td>Image</td>
+                            <td>Name</td>
+                            <td>Stock</td>
+                            <td>Price</td>
+                            <td>Category</td>
+                            <td>Date</td>
+                            <td>Action</td>
+                        </tr>
                         </thead>
                         @foreach ($products as $product)
                             <tr>
                                 <td>{{$product->id}}</td>
-                                <td><img src="{{asset('assets/images/products')}}/{{$product->image}}" width="60"></td>
+                                <td><img src="{{asset('assets/images/products')}}/{{$product->image}}" width="60"
+                                         alt="{{$product->name}}"></td>
                                 <td>{{$product->name}}</td>
                                 <td>{{$product->stock_status}}</td>
                                 <td>{{$product->regular_price}}</td>

@@ -9,6 +9,10 @@ use \App\Http\Livewire\CartComponent;
 use \App\Http\Livewire\CheckoutComponent;
 use \App\Http\Livewire\DetailsComponent;
 use \App\Http\Livewire\SearchComponent;
+use \App\Http\Livewire\User\UserOrdersComponent;
+use \App\Http\Livewire\User\UserOrderDetailsComponent;
+use \App\Http\Livewire\Admin\AdminOrderComponent;
+use \App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
@@ -47,7 +51,7 @@ Route::get('/product/{slug}', DetailsComponent::class)->name('product.details');
 
 Route::get('/search', SearchComponent::class)->name('product.search');
 
-Route::get('/product-category/{category_slug}',CategoryComponent::class)->name('product.category');
+Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');
@@ -56,11 +60,17 @@ Route::get('/product-category/{category_slug}',CategoryComponent::class)->name('
 // For USER or CUSTOMER
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
+    Route::get('/user/orders', UserOrdersComponent::class)->name('user.orders');
+    Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderdetails');
 });
 
 // FOR ADMIN
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
+    Route::get('/admin/orders', AdminOrderComponent::class)->name('admin.orders');
+    Route::get('/admin/orders/{order_id}', AdminOrderDetailsComponent::class)->name('admin.orderdetails');
+    Route::get('/admin/products', AdminProductComponent::class)->name('admin.products');
     Route::get('/admin/categories',AdminCategoryComponent::class)->name('admin.categories');
     Route::get('/admin/category/add',AdminAddCategoryComponent::class)->name('admin.addcategory') ;
     Route::get('/admin/category/edit/{category_slug}',AdminEditCategoryComponent::class)->name('admin.editcategory');

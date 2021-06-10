@@ -17,11 +17,11 @@ class AuthAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->utype === 'ADM')
-        {
+//        if (session('utype') === 'ADM') {
+        // 進入頁面的使用者權限是哪一個
+        if (Auth::user()->utype === 'ADM') {
             return $next($request);
-        }
-        else{
+        } else {
             session()->flush();
             return redirect()->route('login');
         }
