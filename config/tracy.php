@@ -23,11 +23,11 @@ return [
         'routing' => true,
         'database' => true,
         'view' => true,
-        'event' => false,
+        'event' => true,
         'session' => true,
         'request' => true,
         'auth' => true,
-        'html-validator' => false,
+        'html-validator' => true,
         'terminal' => true,
     ],
 ];
