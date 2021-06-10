@@ -1,10 +1,11 @@
 {{-- Admin Product頁面css --}}
 <div>
     <style>
-        nav svg{
+        nav svg {
             height: 20px;
         }
-        nav .hidden{
+
+        nav .hidden {
             display: block !important;
         }
     </style>

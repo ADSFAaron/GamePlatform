@@ -49,26 +49,29 @@
                     </div>
                     <div class="topbar-menu right-menu">
                         <ul>
-
-
                             @if(Route::has('login'))
                                 @auth
                                     {{-- Login User Type --}}
-                                    @if(\Illuminate\Support\Facades\Auth::user()->utype === 'ADM')
+                                    @if(Auth::user()->utype === 'ADM')
                                         {{-- ADMIN--}}
                                         <li class="menu-item menu-item-has-children parent">
                                             <a title="My Account" href="#">My Account
-                                                ({{\Illuminate\Support\Facades\Auth::user()->name}})<i
+                                                ({{Auth::user()->name}})<i
                                                     class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="submenu curency">
                                                 <li class="menu-item">
-                                                    <a title="Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                                    <a title="Dashboard"
+                                                       href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a title="All Order" href="{{route('admin.orders')}}">All Orders</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Categories" href="{{route('admin.categories')}}">Categories</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a title="Products" href="{{route('admin.products')}}">All Products</a>
+                                                    <a title="Products" href="{{route('admin.products')}}">All
+                                                        Products</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Logout" href="{{ route('logout') }}"
@@ -83,12 +86,16 @@
                                         {{-- NORMAL USER --}}
                                         <li class="menu-item menu-item-has-children parent">
                                             <a title="My Account" href="#">My Account
-                                                ({{\Illuminate\Support\Facades\Auth::user()->name}})<i
+                                                ({{Auth::user()->name}})<i
                                                     class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="submenu curency">
                                                 <li class="menu-item">
                                                     <a title="Dashboard"
                                                        href="{{ route('user.dashboard') }}">Dashboard</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a title="My Orders"
+                                                       href="{{ route('user.orders') }}">My Orders</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Logout" href="{{ route('logout') }}"
@@ -134,10 +141,10 @@
                             </a>
                         </div>
                         <div class="wrap-icon-section minicart">
-                            <a href="#" class="link-direction">
+                            <a href="/cart" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 <div class="left-info">
-                                    @if(Cart::count() >0)
+                                    @if(Cart::count() > 0)
                                         <span class="index">{{Cart::count()}} items</span>
                                     @endif
                                     <span class="title">CART</span>
@@ -350,7 +357,7 @@
                             <h3 class="item-header">We Using Safe Payments:</h3>
                             <div class="item-content">
                                 <div class="wrap-list-item wrap-gallery">
-                                    <img src="assets/images/payment.png" style="max-width: 260px;">
+                                    <img src="{{asset('assets/images/payment.png')}}" style="max-width: 260px;">
                                 </div>
                             </div>
                         </div>
@@ -383,18 +390,19 @@
 
                     <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         <div class="wrap-footer-item">
-                            <h3 class="item-header">Dowload App</h3>
+                            <h3 class="item-header">Download App</h3>
                             <div class="item-content">
                                 <div class="wrap-list-item apps-list">
                                     <ul>
                                         <li><a href="#" class="link-to-item" title="our application on apple store">
-                                                <figure><img src="assets/images/brands/apple-store.png"
+                                                <figure><img src="{{asset('assets/images/brands/apple-store.png')}}"
                                                              alt="apple store" width="128" height="36"></figure>
                                             </a></li>
                                         <li><a href="#" class="link-to-item"
                                                title="our application on google play store">
-                                                <figure><img src="assets/images/brands/google-play-store.png"
-                                                             alt="google play store" width="128" height="36"></figure>
+                                                <figure><img
+                                                        src="{{asset('assets/images/brands/google-play-store.png')}}"
+                                                        alt="google play store" width="128" height="36"></figure>
                                             </a></li>
                                     </ul>
                                 </div>
