@@ -97,7 +97,7 @@
                 </div>
             </div>
 
-            <div class="wrap-show-advance-info-box style-1 box-in-site">
+            {{-- <div class="wrap-show-advance-info-box style-1 box-in-site">
                 <h3 class="title-box">Most Viewed Products</h3>
                 <div class="wrap-products">
                     <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
@@ -272,7 +272,7 @@
                         </div>
                     </div>
                 </div><!--End wrap-products-->
-            </div>
+            </div> --}}
 
         </div><!--end main content area-->
     </div><!--end container-->

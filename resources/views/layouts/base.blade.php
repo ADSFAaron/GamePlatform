@@ -51,14 +51,14 @@
         <div class="row">
             <div class="topbar-menu-area">
                 <div class="container">
-                    <div class="topbar-menu left-menu">
+                    {{-- <div class="topbar-menu left-menu">
                         <ul>
                             <li class="menu-item">
                                 <a title="Hotline: (+123) 456 789" href="#"><span
                                         class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                     <div class="topbar-menu right-menu">
                         <ul>
                             @if(Route::has('login'))
@@ -143,7 +143,7 @@
                     @livewire('header-search-component')
 
                     <div class="wrap-icon right-section">
-                        <div class="wrap-icon-section wishlist">
+                        {{-- <div class="wrap-icon-section wishlist">
                             <a href="#" class="link-direction">
                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                 <div class="left-info">
@@ -151,7 +151,7 @@
                                     <span class="title">Wishlist</span>
                                 </div>
                             </a>
-                        </div>
+                        </div> --}}
                         <div class="wrap-icon-section minicart">
                             <a href="/cart" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
@@ -177,7 +177,7 @@
             </div>
 
             <div class="nav-section header-sticky">
-                <div class="header-nav-section">
+                {{-- <div class="header-nav-section">
                     <div class="container">
                         <ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info">
                             <li class="menu-item"><a href="#" class="link-term">Weekly Featured</a><span
@@ -192,7 +192,7 @@
                                     class="nav-label hot-label">hot</span></li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="primary-nav-section">
                     <div class="container">
@@ -226,7 +226,7 @@
 
 {{$slot}}
 
-<footer id="footer">
+{{-- <footer id="footer">
     <div class="wrap-footer-content footer-style-1">
 
         <div class="wrap-function-info">
@@ -515,7 +515,7 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> --}}
 
 <script src="{{ asset('assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4') }}'"></script>
 <script src="{{ asset('assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
