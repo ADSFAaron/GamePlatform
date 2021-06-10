@@ -43,19 +43,19 @@ class CartComponent extends Component
     public function checkout()
     {
         if (Auth::check()) {
-            return redirect()->route('checkout');
+            return redirect()->route('/checkout');
         } else {
-            return redirect()->route('login');
+            return redirect()->route('/login');
         }
     }
 
     public function setAmountForCheckout()
     {
         session()->put('checkout', [
-            'discount' => 0,
-            'subtotal' => Cart::instance('cart')->subtotal(),
-            'tax' => Cart::instance('cart')->tax(),
-            'total' => Cart::instance('cart')->total()
+            'discount' => Session::get('checkout')->discount,
+            'subtotal' => Session::get('checkout')->subtotal,
+            'tax' => Session::get('checkout')->tax,
+            'total' => Session::get('checkout')->total
         ]);
     }
 
@@ -66,12 +66,15 @@ class CartComponent extends Component
         $ShippingFree = 0;
 
         $cartArray = Session::get('cart');
-        foreach ($cartArray as $items) {
-            foreach ($items as $item) {
-                $Subtotal += $item->model->regular_price * $item->qty;
-                $Tax += $item->tax;
+        if ($cartArray != null) {
+            foreach ($cartArray as $items) {
+                foreach ($items as $item) {
+                    $Subtotal += $item->model->regular_price * $item->qty;
+                    $Tax += $item->tax * $item->qty;
+                }
             }
         }
+
         $Total = $Subtotal + $Tax + $ShippingFree;
 
         session()->put('checkout', [

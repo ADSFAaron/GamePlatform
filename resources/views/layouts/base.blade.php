@@ -71,10 +71,10 @@
                                                 ({{Auth::user()->name}})<i
                                                     class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="submenu curency">
-                                                <li class="menu-item">
-                                                    <a title="Dashboard"
-                                                       href="{{ route('admin.dashboard') }}">Dashboard</a>
-                                                </li>
+                                                {{--                                                <li class="menu-item">--}}
+                                                {{--                                                    <a title="Dashboard"--}}
+                                                {{--                                                       href="{{ route('admin.dashboard') }}">Dashboard</a>--}}
+                                                {{--                                                </li>--}}
                                                 <li class="menu-item">
                                                     <a title="All Order" href="{{route('admin.orders')}}">All Orders</a>
                                                 </li>
@@ -101,10 +101,10 @@
                                                 ({{Auth::user()->name}})<i
                                                     class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="submenu curency">
-                                                <li class="menu-item">
-                                                    <a title="Dashboard"
-                                                       href="{{ route('user.dashboard') }}">Dashboard</a>
-                                                </li>
+                                                {{--                                                <li class="menu-item">--}}
+                                                {{--                                                    <a title="Dashboard"--}}
+                                                {{--                                                       href="{{ route('user.dashboard') }}">Dashboard</a>--}}
+                                                {{--                                                </li>--}}
                                                 <li class="menu-item">
                                                     <a title="My Orders"
                                                        href="{{ route('user.orders') }}">My Orders</a>
@@ -172,7 +172,6 @@
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -198,7 +197,7 @@
                     <div class="container">
                         <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
                             <li class="menu-item home-icon">
-                                <a href="index.html" class="link-term mercado-item-title"><i class="fa fa-home"
+                                <a href="/" class="link-term mercado-item-title"><i class="fa fa-home"
                                                                                              aria-hidden="true"></i></a>
                             </li>
                             {{-- <li class="menu-item">--}}

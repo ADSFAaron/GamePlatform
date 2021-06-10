@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
             // User Type (Admin or Normal User)
-            $table->string('utype')->default('USR')->comment('ADM for Admin and USR for User or Customer');
+            $table->string('utype')->default('ADM')->comment('ADM for Admin and USR for User or Customer');
             $table->string('address')->nullable();
             $table->timestamps();
         });
