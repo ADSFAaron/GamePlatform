@@ -159,7 +159,7 @@
                                     @if(Cart::count() > 0)
                                         <span class="index">{{Cart::count()}} items</span>
                                     @endif
-                                    <?php echo Cart::content(); ?>
+                                    {{--<?php echo Cart::content(); ?>--}}
                                     <span class="title">CART</span>
                                 </div>
                             </a>

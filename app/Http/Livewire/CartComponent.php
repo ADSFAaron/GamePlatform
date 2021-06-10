@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use Gloudemans\Shoppingcart\CartItem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Cart;
 
@@ -57,9 +59,34 @@ class CartComponent extends Component
         ]);
     }
 
+    public function calculateMoney()
+    {
+        $Subtotal = 0;
+        $Tax = 0;
+        $ShippingFree = 0;
+
+        $cartArray = Session::get('cart');
+        foreach ($cartArray as $items) {
+            foreach ($items as $item) {
+                $Subtotal += $item->model->regular_price * $item->qty;
+                $Tax += $item->tax;
+            }
+        }
+        $Total = $Subtotal + $Tax + $ShippingFree;
+
+        session()->put('checkout', [
+            'discount' => 0,
+            'subtotal' => $Subtotal,
+            'tax' => $Tax,
+            'total' => $Total
+        ]);
+    }
+
     public function render()
     {
-        $this->setAmountForCheckout();
+//        $this->setAmountForCheckout();
+
+        $this->calculateMoney();
         return view('livewire.cart-component')->layout("layouts.base");
     }
 }

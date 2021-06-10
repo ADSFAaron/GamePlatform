@@ -9,92 +9,95 @@
             </ul>
         </div>
         <div class=" main-content-area">
-            {{--            @if(Cart::instance('cart')->count()>0)--}}
-            <div class="wrap-iten-in-cart">
-                <p>{{Session::has('cart')}}</p>
-                <p>{{Cart::count()}}</p>
-                <p><?php
-                    $value = Session::get('cart');
-                    echo json_encode($value);
-                    ?></p>
-                @if(Session::has('success_message'))
-                    <div class="alert alert-success">
-                        <strong>Success</strong> {{Session::get('success_message')}}
+            @if(Session::has('cart')>0)
+                <div class="wrap-iten-in-cart">
+                    @if(Session::has('success_message'))
+                        <div class="alert alert-success">
+                            <strong>Success</strong> {{Session::get('success_message')}}
+                        </div>
+                    @endif
+                    @if(Session::has('cart') > 0)
+
+                        <h3 class="box-title">Products Name</h3>
+                        <ul class="products-cart">
+                            @foreach (Session::get('cart') as $items)
+                                @foreach ($items as $item)
+                                    <li class="pr-cart-item">
+                                        <div class="product-image">
+                                            <figure><img
+                                                    src="{{ asset('assets/images/products') }}/{{$item->model->image}}"
+                                                    alt="{{$item->model->name}}"></figure>
+                                        </div>
+                                        <div class="product-name">
+                                            <a class="link-to-product"
+                                               href="{{route('product.details',['slug'=>$item->model->slug])}}">{{$item->model->name}}</a>
+                                        </div>
+                                        <div class="price-field produtc-price"><p class="price">
+                                                NTD {{$item->model->regular_price}}</p></div>
+                                        <div class="quantity">
+                                            <div class="quantity-input">
+                                                <input type="text" name="product-quatity" value="{{$item->qty}}"
+                                                       data-max="120" pattern="[0-9]*">
+                                                <a class="btn btn-increase" href="#"
+                                                   wire:click.prevent="increaseQuantity('{{$item->rowId}}')"></a>
+                                                <a class="btn btn-reduce" href="#"
+                                                   wire:click.prevent="decreaseQuantity('{{$item->rowId}}')"></a>
+                                            </div>
+                                        </div>
+                                        <div class="price-field sub-total"><p class="price">${{$item->subtotal}}</p>
+                                        </div>
+                                        <div class="delete">
+                                            <a href="#" wire:click.prevent="destroy('{{$item->rowId}}')"
+                                               class="btn btn-delete" title="">
+                                                <span>Delete from your cart</span>
+                                                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @endforeach
+                        </ul>
+                    @else
+                        <p>No item in cart</p>
+                    @endif
+                </div>
+
+                <div class="summary">
+                    <div class="order-summary">
+                        <h4 class="title-box">Order Summary</h4>
+                        <p class="summary-info"><span class="title">Subtotal</span><b
+                                class="index">${{Cart::subtotal()}}</b></p>
+                        <p class="summary-info"><span class="title">Tax</span><b class="index">${{Cart::tax()}}</b></p>
+                        <p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b>
+                        </p>
+                        <p class="summary-info total-info "><span class="title">Total</span><b
+                                class="index">${{Cart::total()}}</b></p>
                     </div>
-                @endif
-                @if(Session::has('cart') > 0)
+                    <div class="grid grid-flow-row">
+                        <div class="checkout-info">
+                            <label class="checkbox-field">
+                                <input class="frm-input " name="have-code" id="have-code" value=""
+                                       type="checkbox"><span>I have promo code</span>
+                            </label>
+                            <a class="btn btn-checkout" href="#" wire:click.prevent="checkout">Check out</a>
+                            <a class="link-to-shop" href="/shop">Continue Shopping<i class="fa fa-arrow-circle-right"
+                                                                                     aria-hidden="true"></i></a>
+                        </div>
 
-                    <h3 class="box-title">Products Name</h3>
-                    <ul class="products-cart">
-                        @foreach (\Gloudemans\Shoppingcart\Facades\Cart::getFacadeRoot() as $item)
-                            <li class="pr-cart-item">
-                                <div class="product-image">
-                                    <figure><img src="{{ asset('assets/images/products') }}/{{$item->model->image}}"
-                                                 alt="{{$item->model->name}}"></figure>
-                                </div>
-                                <div class="product-name">
-                                    <a class="link-to-product"
-                                       href="{{route('product.details',['slug'=>$item->model->slug])}}">{{$item->model->name}}</a>
-                                </div>
-                                <div class="price-field produtc-price"><p class="price">
-                                        ${{$item->model->regular_price}}</p></div>
-                                <div class="quantity">
-                                    <div class="quantity-input">
-                                        <input type="text" name="product-quatity" value="{{$item->qty}}"
-                                               data-max="120" pattern="[0-9]*">
-                                        <a class="btn btn-increase" href="#"
-                                           wire:click.prevent="increaseQuantity('{{$item->rowId}}')"></a>
-                                        <a class="btn btn-reduce" href="#"
-                                           wire:click.prevent="decreaseQuantity('{{$item->rowId}}')"></a>
-                                    </div>
-                                </div>
-                                <div class="price-field sub-total"><p class="price">${{$item->subtotal}}</p></div>
-                                <div class="delete">
-                                    <a href="#" wire:click.prevent="destroy('{{$item->rowId}}')"
-                                       class="btn btn-delete" title="">
-                                        <span>Delete from your cart</span>
-                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                @else
-                    <p>No item in cart</p>
-                @endif
-            </div>
+                        <div class="update-clear">
+                            <a class="btn btn-clear" href="#" wire:click.prevent="destroyAll()">Clear Shopping Cart</a>
+                            {{--                        <a class="btn btn-update" href="#">Update Shopping Cart</a>--}}
+                        </div>
 
-            <div class="summary">
-                <div class="order-summary">
-                    <h4 class="title-box">Order Summary</h4>
-                    <p class="summary-info"><span class="title">Subtotal</span><b
-                            class="index">${{Cart::subtotal()}}</b></p>
-                    <p class="summary-info"><span class="title">Tax</span><b class="index">${{Cart::tax()}}</b></p>
-                    <p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b>
-                    </p>
-                    <p class="summary-info total-info "><span class="title">Total</span><b
-                            class="index">${{Cart::total()}}</b></p>
+                    </div>
                 </div>
-                <div class="checkout-info">
-                    <label class="checkbox-field">
-                        <input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I have promo code</span>
-                    </label>
-                    <a class="btn btn-checkout" href="#" wire:click.prevent="checkout">Check out</a>
-                    <a class="link-to-shop" href="/shop">Continue Shopping<i class="fa fa-arrow-circle-right"
-                                                                             aria-hidden="true"></i></a>
+            @else
+                <div class="text-center" style="padding: 30px 0;">
+                    <h1>Your Cart is Empty!</h1>
+                    <p>Add items ot it now</p>
+                    <a href="/shop" class="btn btn-success">Shop Now</a>
                 </div>
-                <div class="update-clear">
-                    <a class="btn btn-clear" href="#" wire:click.prevent="destroyAll()">Clear Shopping Cart</a>
-                    <a class="btn btn-update" href="#">Update Shopping Cart</a>
-                </div>
-            </div>
-            {{--            @else--}}
-            {{--                <div class="text-center" style="padding: 30px 0;">--}}
-            {{--                    <h1>Your Cart is Empty!</h1>--}}
-            {{--                    <p>Add items ot it now</p>--}}
-            {{--                    <a href="/shop" class="btn btn-success">Shop Now</a>--}}
-            {{--                </div>--}}
-            {{--            @endif--}}
+            @endif
 
             <div class="wrap-show-advance-info-box style-1 box-in-site">
                 <h3 class="title-box">Most Viewed Products</h3>
