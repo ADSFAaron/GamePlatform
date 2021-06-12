@@ -14,12 +14,12 @@ class AdminProductComponent extends Component
     {
         $product = Product::find($id);
         $product->delete();
-        session()->flash('message','Product has been deleted successfully!');
+        session()->flash('message', 'Product has been deleted successfully!');
     }
 
     public function render()
     {
-        $products =Product::paginate(10);
-        return view('livewire.admin.admin-product-component',['products'=>$products])->layout('layouts.base');
+        $products = Product::paginate(10);
+        return view('livewire.admin.admin-product-component', ['products' => $products])->layout('layouts.base');
     }
 }

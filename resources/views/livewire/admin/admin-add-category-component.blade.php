@@ -9,27 +9,30 @@
                                 Add New Category
                             </div>
                             <div class="col-md-6">
-                                <a href="{{route('admin.categories')}}" class="btn btn-sucess pull-right">All Category</a>
+                                <a href="{{route('admin.categories')}}" class="btn btn-sucess pull-right">All
+                                    Category</a>
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
                         @if(Session::has('message'))
-                        <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                            <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                         @endif
                         <form wire:submit.prevent="storeCategory">
                             <div class="form-horizontal">
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Category Nameee</label>
+                                    <label class="col-md-4 control-label">Category Name</label>
                                     <div class="col-md-4">
-                                        <input type="text" placeholder="Category Name" class="form-control input-md" wire:model="name" wire:keyup="generateslug" />
+                                        <input type="text" placeholder="Category Name" class="form-control input-md"
+                                               wire:model="name" wire:keyup="generateslug"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Category Slug</label>
                                     <div class="col-md-4">
-                                        <input type="text" placeholder="Category Slug" class="form-control input-md" wire:model="slug" />
+                                        <input type="text" placeholder="Category Slug" class="form-control input-md"
+                                               wire:model="slug"/>
                                     </div>
                                 </div>
 

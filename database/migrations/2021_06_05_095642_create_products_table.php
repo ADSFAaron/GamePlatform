@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->decimal('sale_price')->nullable();
             $table->string('SKU');
             $table->enum('stock_status', ['instock', 'outofstock']);
-            $table->boolean('feature')->default(false);
+            $table->boolean('featured')->default(false);
             $table->unsignedInteger('quantity')->default(10);
             $table->string('image')->nullable();
             $table->text('images')->nullable();

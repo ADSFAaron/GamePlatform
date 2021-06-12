@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
     <link
         href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext"
         rel="stylesheet">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
           integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/flexslider.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flexslider.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css') }}">
@@ -198,7 +198,7 @@
                         <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
                             <li class="menu-item home-icon">
                                 <a href="/" class="link-term mercado-item-title"><i class="fa fa-home"
-                                                                                             aria-hidden="true"></i></a>
+                                                                                    aria-hidden="true"></i></a>
                             </li>
                             {{-- <li class="menu-item">--}}
                             {{-- <a href="about-us.html" class="link-term mercado-item-title">About Us</a>--}}

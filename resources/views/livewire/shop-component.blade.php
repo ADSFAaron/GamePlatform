@@ -63,14 +63,24 @@
                                     <div class="product-thumnail">
                                         <a href="{{ route('product.details',['slug'=>$product->slug]) }}"
                                            title="{{$product->name}}">
-                                            <figure><img src="{{ asset('assets/images/products') }}/{{$product->image}}"
-                                                         alt="{{$product->name}}"></figure>
+                                            @if(!empty($product->image))
+                                                <figure><img
+                                                        src="{{ asset('assets/images/products') }}/{{$product->image}}"
+                                                        alt="{{$product->name}}" style="object-fit: cover"></figure>
+                                            @else
+                                                <figure><img src="{{asset('assets/images/no-picture.jpg')}}"
+                                                             alt="{{$product->name}}"></figure>
+                                            @endif
                                         </a>
                                     </div>
                                     <div class="product-info">
-                                        <a href="{{ route('product.details',['slug'=>$product->slug]) }}" class="product-name"><span>{{$product->name}}</span></a>
-                                        <div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span></div>
-                                        <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add To Cart</a>
+                                        <a href="{{ route('product.details',['slug'=>$product->slug]) }}"
+                                           class="product-name"><span>{{$product->name}}</span></a>
+                                        <div class="wrap-price"><span
+                                                class="product-price">NTD {{$product->regular_price}}</span></div>
+                                        <a href="#" class="btn add-to-cart"
+                                           wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add
+                                            To Cart</a>
                                     </div>
                                 </div>
                             </li>
@@ -97,9 +107,10 @@
                     <div class="widget-content">
                         <ul class="list-category">
                             @foreach ($categories as $category)
-                            <li class="category-item">
-                                <a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link">{{$category->name}}</a>
-                            </li>
+                                <li class="category-item">
+                                    <a href="{{route('product.category',['category_slug'=>$category->slug])}}"
+                                       class="cate-link">{{$category->name}}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>

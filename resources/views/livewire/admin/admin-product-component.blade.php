@@ -30,30 +30,43 @@
                         @endif
                         <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Stock</th>
-                                    <th>Price</th>
-                                    <th>Category</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
-                                </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Stock</th>
+                                <th>Price</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
                             </thead>
                             @foreach ($products as $product)
                                 <tr>
                                     <td>{{$product->id}}</td>
-                                    <td><img src="{{asset('assets/images/products')}}/{{$product->image}}" width="60"></td>
-                                    <td>{{$product->name}}</td>
-                                    <td>{{$product->stock_status}}</td>
-                                    <td>{{$product->regular_price}}</td>
-                                    <td>{{$product->category->name}}</td>
-                                    <td>{{$product->created_at}}</td>
-                                    <td>
-                                        <a href="{{route('admin.editproduct',['product_slug'=>$product->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
-                                        <a href="#" style="margin-left:10px;" wire:click.prevent="deleteProduct({{$product->id}})"><i class="fa fa-times fa-2x text-danger"></i></a>
-                                    </td>
+                                    @if(!empty($product->image))
+
+                                        <td><img src="{{asset('assets/images/products')}}/{{$product->image}}"
+                                                 width="60"
+                                                 alt="{{$product->name}}">
+                                    @else
+                                        <td><img src="{{asset('assets/images/no-picture.jpg')}}"
+                                                 width="60"
+                                                 alt="{{$product->name}}">
+                                            @endif
+                                        </td>
+                                        <td>{{$product->name}}</td>
+                                        <td>{{$product->stock_status}}</td>
+                                        <td>{{$product->regular_price}}</td>
+                                        <td>{{$product->category->name}}</td>
+                                        <td>{{$product->created_at}}</td>
+                                        <td>
+                                            <a href="{{route('admin.editproduct',['product_slug'=>$product->slug])}}"><i
+                                                    class="fa fa-edit fa-2x text-info"></i></a>
+                                            <a href="#" style="margin-left:10px;"
+                                               wire:click.prevent="deleteProduct({{$product->id}})"><i
+                                                    class="fa fa-times fa-2x text-danger"></i></a>
+                                        </td>
                                 </tr>
                             @endforeach
                         </table>
