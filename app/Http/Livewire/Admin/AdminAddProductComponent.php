@@ -38,26 +38,40 @@ class AdminAddProductComponent extends Component
         $this->slug = Str::slug($this->name, '-');
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'name' => 'required',
+            'slug' => 'required|unique:products',
+            'short_description' => 'required',
+            'description' => 'required',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'featured' => 'required',
+            'quantity' => 'required|numeric',
+            'image' => 'required|mines:jpeg,png',
+            'category_id' => 'required'
+        ]);
+    }
+
     public function addProduct()
     {
-//        echo "Name: " . $this->name . "\r\n";
-//        echo "slug: " . $this->slug . "\r\n";
-//        echo "short_description: " . $this->short_description . "\r\n";
-//        echo "description: " . $this->description . "\r\n";
-//        echo "regular_price: " . $this->regular_price . "\r\n";
-//        echo "sale_price: " . $this->sale_price . "\r\n";
-//        echo "SKU: " . $this->SKU . "\r\n";
-//        echo "stock_status: " . $this->stock_status . "\r\n";
-//        echo "featured: " . $this->featured . "\r\n";
-//        echo "quantity: " . $this->quantity . "\r\n";
-//        echo "image: " . $this->image . "\r\n";
-//        echo "category_id: " . $this->category_id . "\r\n";
-
-//        $dbItems = DB::table('products')->get()->keyBy($this->name);
-//        if (count($dbItems)) {
-//            session()->flash('message', 'Product exist!');
-//        } else {
-
+        $this->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:products',
+            'short_description' => 'required',
+            'description' => 'required',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'featured' => 'required',
+            'quantity' => 'required|numeric',
+            'image' => 'required|mines:jpeg,png',
+            'category_id' => 'required'
+        ]);
         $product = new Product();
         $product->name = $this->name;
         $product->slug = $this->slug;
@@ -83,7 +97,6 @@ class AdminAddProductComponent extends Component
 //            dump('Connected to the DB: ' . DB::connection()->getDatabaseName());
 //        }
         $product->save();
-//        dump("Product has been created successfully!");
         session()->flash('message', 'Product has been created successfully!');
     }
 

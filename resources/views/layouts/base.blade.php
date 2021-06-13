@@ -4,19 +4,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Home</title>
+
+    <!-- Website LOGO -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
+
+    <!-- Website Font -->
     <link
         href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext"
         rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext"
         rel="stylesheet">
+
+    <!-- Website CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.min.css') }}">
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}"> --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    {{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">--}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flexslider.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.min.css') }}">
@@ -89,6 +95,15 @@
                                                     <a title="Manage Home Slider" href="{{route('admin.homeslider')}}">Manage
                                                         Home Slider</a>
                                                 </li>
+                                                <li class="menu-item">
+                                                    <a title="Manage Home Categories"
+                                                       href="{{route('admin.homecategories')}}">Manage
+                                                        Home Categories</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a title="Sale Setting"
+                                                       href="{{route('admin.sale')}}">Sale Setting</a>
+                                                </li>
 
                                                 <li class="menu-item">
                                                     <a title="Logout" href="{{ route('logout') }}"
@@ -148,27 +163,17 @@
                     @livewire('header-search-component')
 
                     <div class="wrap-icon right-section">
-                        {{-- <div class="wrap-icon-section wishlist">
-                            <a href="#" class="link-direction">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                <div class="left-info">
-                                    <span class="index">0 item</span>
-                                    <span class="title">Wishlist</span>
-                                </div>
-                            </a>
-                        </div> --}}
-                        <div class="wrap-icon-section minicart">
-                            <a href="/cart" class="link-direction">
-                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                <div class="left-info">
-                                    @if(Cart::count() > 0)
-                                        <span class="index">{{Cart::count()}} items</span>
-                                    @endif
-                                    {{--<?php echo Cart::content(); ?>--}}
-                                    <span class="title">CART</span>
-                                </div>
-                            </a>
-                        </div>
+{{--                        <div class="wrap-icon-section wishlist">--}}
+{{--                            <a href="#" class="link-direction">--}}
+{{--                                <i class="fa fa-heart" aria-hidden="true"></i>--}}
+{{--                                <div class="left-info">--}}
+{{--                                    <span class="index">0 item</span>--}}
+{{--                                    <span class="title">Wishlist</span>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+
+                        @livewire('cart-count-component')
                         <div class="wrap-icon-section show-up-after-1024">
                             <a href="#" class="mobile-navigation">
                                 <span></span>
@@ -541,6 +546,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"
         integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg=="
         crossorigin="anonymous"></script>
+<script src="https://cdn.tiny.cloud/1/jnxzzilnzvllqky586no4gpalm937qi8ix2qinheqzhkikea/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
 @livewireScripts
 
 @stack('scripts')

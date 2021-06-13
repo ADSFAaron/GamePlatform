@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use Livewire\Component;
+use Cart;
 use Gloudemans\Shoppingcart\CartItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Livewire\Component;
-use Cart;
 
 class CartComponent extends Component
 {
@@ -15,6 +15,7 @@ class CartComponent extends Component
         $product = Cart::get($rowId);
         $qty = $product->qty + 1;
         Cart::update($rowId, $qty);
+        $this->emitTo('cart-count-component', 'refreshComponent');
     }
 
     public function decreaseQuantity($rowId)
@@ -22,17 +23,20 @@ class CartComponent extends Component
         $product = Cart::get($rowId);
         $qty = $product->qty - 1;
         Cart::update($rowId, $qty);
+        $this->emitTo('cart-count-component', 'refreshComponent');
     }
 
     public function destroy($rowId)
     {
         Cart::remove($rowId);
+        $this->emitTo('cart-count-component', 'refreshComponent');
         session()->flash('success_message', 'Item has been removed');
     }
 
     public function destroyAll()
     {
         Cart::destroy();
+        $this->emitTo('cart-count-component', 'refreshComponent');
     }
 
 //    public function removeCoupon()
@@ -43,19 +47,19 @@ class CartComponent extends Component
     public function checkout()
     {
         if (Auth::check()) {
-            return redirect()->route('/checkout');
+            return redirect()->route('checkout');
         } else {
-            return redirect()->route('/login');
+            return redirect()->route('login');
         }
     }
 
     public function setAmountForCheckout()
     {
         session()->put('checkout', [
-            'discount' => Session::get('checkout')->discount,
-            'subtotal' => Session::get('checkout')->subtotal,
-            'tax' => Session::get('checkout')->tax,
-            'total' => Session::get('checkout')->total
+            'discount' => session::get('checkout')->discount,
+            'subtotal' => session::get('checkout')->subtotal,
+            'tax' => session::get('checkout')->tax,
+            'total' => session::get('checkout')->total
         ]);
     }
 
@@ -75,14 +79,18 @@ class CartComponent extends Component
             }
         }
 
-        $Total = $Subtotal + $Tax + $ShippingFree;
+        if (count(Session::get('cart')) > 0) {
+            $Total = $Subtotal + $Tax + $ShippingFree;
 
-        session()->put('checkout', [
-            'discount' => 0,
-            'subtotal' => $Subtotal,
-            'tax' => $Tax,
-            'total' => $Total
-        ]);
+            session()->put('checkout', [
+                'discount' => 0,
+                'subtotal' => $Subtotal,
+                'tax' => $Tax,
+                'total' => $Total
+            ]);
+        } else {
+            session()->forget('checkout');
+        }
     }
 
     public function render()

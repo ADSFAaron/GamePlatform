@@ -29,25 +29,29 @@
                         @endif
                         <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Category Name</th>
-                                    <th>Slug</th>
-                                    <th>Action</th>
-                                </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>Category Name</th>
+                                <th>Slug</th>
+                                <th>Action</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $category)
+                            @foreach ($categories as $category)
                                 <tr>
                                     <td>{{$category->id}}</td>
                                     <td>{{$category->name}}</td>
                                     <td>{{$category->slug}}</td>
                                     <td>
-                                        <a href="{{route('admin.editcategory',['category_slug'=>$category->slug])}}"><i class="fa fa-edit fa-2x"></i></a>
-                                        <a href="#" wire:click.prevent="deleteCategory({{$category->id}})" style="margin-left:10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                        <a href="{{route('admin.editcategory',['category_slug'=>$category->slug])}}"><i
+                                                class="fa fa-edit fa-2x"></i></a>
+                                        <a href="#"
+                                           onclick="confirm('Are you sure to delete this category?')||event.stopImmediatePropagation()"
+                                           wire:click.prevent="deleteCategory({{$category->id}})"
+                                           style="margin-left:10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
                                     </td>
                                 </tr>
-                                @endforeach
+                            @endforeach
                             </tbody>
                         </table>
                         {{$categories->links()}}
