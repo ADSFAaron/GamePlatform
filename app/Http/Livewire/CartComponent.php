@@ -77,19 +77,23 @@ class CartComponent extends Component
                     $Tax += $item->tax * $item->qty;
                 }
             }
-        }
-
-        if (count(Session::get('cart')) > 0) {
-            $Total = $Subtotal + $Tax + $ShippingFree;
-
-            session()->put('checkout', [
-                'discount' => 0,
-                'subtotal' => $Subtotal,
-                'tax' => $Tax,
-                'total' => $Total
-            ]);
         } else {
             session()->forget('checkout');
+        }
+
+        if ($cartArray != null) {
+            if (count(Session::get('cart')) > 0) {
+                $Total = $Subtotal + $Tax + $ShippingFree;
+
+                session()->put('checkout', [
+                    'discount' => 0,
+                    'subtotal' => $Subtotal,
+                    'tax' => $Tax,
+                    'total' => $Total
+                ]);
+            } else {
+                session()->forget('checkout');
+            }
         }
     }
 
