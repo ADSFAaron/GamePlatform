@@ -104,6 +104,10 @@
                                                     <a title="Sale Setting"
                                                        href="{{route('admin.sale')}}">Sale Setting</a>
                                                 </li>
+                                                <li class="menu-item">
+                                                    <a title="Contact Messages"
+                                                       href="{{route('admin.contact')}}">Contact Messages</a>
+                                                </li>
 
                                                 <li class="menu-item">
                                                     <a title="Logout" href="{{ route('logout') }}"
@@ -121,13 +125,17 @@
                                                 ({{Auth::user()->name}})<i
                                                     class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="submenu curency">
-                                                {{--                                                <li class="menu-item">--}}
-                                                {{--                                                    <a title="Dashboard"--}}
-                                                {{--                                                       href="{{ route('user.dashboard') }}">Dashboard</a>--}}
-                                                {{--                                                </li>--}}
+                                                <li class="menu-item">
+                                                    <a title="Dashboard"
+                                                       href="{{ route('user.dashboard') }}">Dashboard</a>
+                                                </li>
                                                 <li class="menu-item">
                                                     <a title="My Orders"
                                                        href="{{ route('user.orders') }}">My Orders</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a title="Change Password"
+                                                       href="{{ route('user.changepassword') }}">Change Password</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Logout" href="{{ route('logout') }}"
@@ -163,15 +171,15 @@
                     @livewire('header-search-component')
 
                     <div class="wrap-icon right-section">
-{{--                        <div class="wrap-icon-section wishlist">--}}
-{{--                            <a href="#" class="link-direction">--}}
-{{--                                <i class="fa fa-heart" aria-hidden="true"></i>--}}
-{{--                                <div class="left-info">--}}
-{{--                                    <span class="index">0 item</span>--}}
-{{--                                    <span class="title">Wishlist</span>--}}
-{{--                                </div>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="wrap-icon-section wishlist">--}}
+                        {{--                            <a href="#" class="link-direction">--}}
+                        {{--                                <i class="fa fa-heart" aria-hidden="true"></i>--}}
+                        {{--                                <div class="left-info">--}}
+                        {{--                                    <span class="index">0 item</span>--}}
+                        {{--                                    <span class="title">Wishlist</span>--}}
+                        {{--                                </div>--}}
+                        {{--                            </a>--}}
+                        {{--                        </div>--}}
 
                         @livewire('cart-count-component')
                         <div class="wrap-icon-section show-up-after-1024">
@@ -222,9 +230,9 @@
                             <li class="menu-item">
                                 <a href="/checkout" class="link-term mercado-item-title">Checkout</a>
                             </li>
-                            {{-- <li class="menu-item">--}}
-                            {{-- <a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>--}}
-                            {{-- </li>--}}
+                            <li class="menu-item">
+                                <a href="/contact-us" class="link-term mercado-item-title">Contact Us</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
