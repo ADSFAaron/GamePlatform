@@ -58,6 +58,24 @@
 - Admin Edit Product Page Bug 修改好ㄌ
 - Admin 新增主頁可以動態新增Slider
 
+## 2021-06-13
+- Admin 可以在主頁選擇要顯示哪些 Category
+- 可以在自訂義促銷時段和哪些商品要促銷
+- Cart -> Checkout 流程修好
+- Checkout 頁面可以正常運行(credit card 和 paypal 還沒做)
+
+## 2021-06-14
+- 處理 Deploy 在 Azure 的網站 Livewire 找不到問題
+
+## 2021-06-15
+- 修改 Admin Order 的 bug
+- Admin 可以更改訂單狀態
+
+## 2021-06-17
+- 使用者可以加商品回饋！
+- Contact US Page 加入
+
+
 
 # 重要檔案
 1. GamePlatform\.env：管理整個專案的網頁位置和 DB 的資訊
@@ -112,6 +130,15 @@ php artisan make:model <MODEL 名稱> -m
 > If you look to others for fulfillment, you will never truly be fulfilled.
 > 
 > In work, do what you enjoy.
+> 
+> Close your eyes. Count to one. That is how long forever feels.
+> 
+> To attain knowledge, add things every day; To attain wisdom, subtract things every day.
+> 
+> Be like water.
+> 
+> Stop trying to control.
+> 
 
 
 ## JetStream 密碼加密方式
