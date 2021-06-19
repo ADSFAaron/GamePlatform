@@ -15,6 +15,7 @@ class AdminAddHomeSliderComponent extends Component
     public $link;
     public $image;
     public $status;
+    public $banner_type;
 
     use WithFileUploads;
 
@@ -34,6 +35,7 @@ class AdminAddHomeSliderComponent extends Component
         $this->image->storeAs('sliders', $imagename);
         $slider->image = $imagename;
         $slider->status = $this->status;
+        $slider->banner_type = $this->banner_type;
         $slider->save();
         session()->flash('message', 'Slider has been created successfully');
     }

@@ -6,16 +6,42 @@
             <div class="slide-carousel owl-carousel style-nav-1" data-items="1" data-loop="1" data-nav="true"
                  data-dots="false">
                 @foreach($sliders as $slide)
-                    <div class="item-slide">
-                        <img src="{{ asset('assets/images/sliders') }}/{{$slide->image}}" alt="{{$slide->title}}"
-                             class="img-slide">
-                        <div class="slide-info slide-1">
-                            <h2 class="f-title" style="color: #9effff"><b>{{$slide->title}}</b></h2>
-                            <span class="subtitle">{{$slide->subtitle}}</span>
-                            <p class="sale-info">最便宜只要: <span class="price">NTD {{$slide->price}}</span></p>
-                            <a href="{{$slide->link}}" class="btn-link">去 GO 物</a>
+
+                    @if($slide->banner_type == 0)
+                        <div class="item-slide">
+                            <img src="{{ asset('assets/images/sliders') }}/{{$slide->image}}" alt="{{$slide->title}}"
+                                 class="img-slide">
+                            <div class="slide-info slide-1">
+                                <h2 class="f-title" style="color: #9effff"><b>{{$slide->title}}</b></h2>
+                                <span class="subtitle">{{$slide->subtitle}}</span>
+                                <p class="sale-info">最便宜只要: <span class="price">NTD {{$slide->price}}</span></p>
+                                <a href="{{$slide->link}}" class="btn-link">去 GO 物</a>
+                            </div>
                         </div>
-                    </div>
+                    @elseif($slide->banner_type == 1)
+                        <div class="item-slide">
+                            <img src="{{ asset('assets/images/sliders') }}/{{$slide->image}}" alt="{{$slide->title}}"
+                                 class="img-slide">
+                            <div class="slide-info slide-2">
+                                <h2 class="f-title">{{$slide->title}}</h2>
+                                <span class="f-subtitle">{{$slide->subtitle}}</span>
+                                <p class="discount-code">{{$slide->link}}</p>
+                                <h4 class="s-title">NTD {{$slide->price}}</h4>
+                                <p class="s-subtitle"></p>
+                            </div>
+                        </div>
+                    @elseif($slide->banner_type == 2)
+                        <div class="item-slide">
+                            <img src="{{ asset('assets/images/sliders') }}/{{$slide->image}}" alt="{{$slide->title}}"
+                                 class="img-slide">
+                            <div class="slide-info slide-3">
+                                <h2 class="f-title" style="color: #9effff"><b>{{$slide->title}}</b></h2>
+                                <span class="subtitle">{{$slide->subtitle}}</span>
+                                <p class="sale-info">最便宜只要: <span class="price">NTD {{$slide->price}}</span></p>
+                                <a href="{{$slide->link}}" class="btn-link">去 GO 物</a>
+                            </div>
+                        </div>
+                    @endif
                 @endforeach
                 {{--                <div class="item-slide">--}}
                 {{--                    <img src="{{ asset('assets/images/main-slider-1-1.jpg') }}" alt="" class="img-slide">--}}

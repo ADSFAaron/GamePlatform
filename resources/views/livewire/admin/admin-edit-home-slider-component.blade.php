@@ -68,6 +68,16 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="col-md-4 control-label">Slider Type</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" wire:model="banner_type">
+                                        <option value="0">Slider 1</option>
+                                        <option value="1">Slider 2</option>
+                                        <option value="2">Slider 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
                                     <button type="submit" class="btn btn-primary">Update</button>

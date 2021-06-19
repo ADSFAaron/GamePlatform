@@ -19,6 +19,7 @@ class AdminEditHomeSliderComponent extends Component
     public $status;
     public $newimage;
     public $slider_id;
+    public $banner_type;
 
     public function mount($slider_id)
     {
@@ -30,6 +31,7 @@ class AdminEditHomeSliderComponent extends Component
         $this->image = $slider->image;
         $this->status = $slider->status;
         $this->slider_id = $slider->id;
+        $this->banner_type = $slider->banner_type;
     }
 
     public function updateSlide()
@@ -48,6 +50,7 @@ class AdminEditHomeSliderComponent extends Component
         }
 
         $slider->status = $this->status;
+        $slider->banner_type = $this->banner_type;
         $slider->save();
         session()->flash('message', 'Slide has been updated successfully!');
     }

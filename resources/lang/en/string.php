@@ -8,6 +8,7 @@ return [
     'cart' => 'Cart',
     'checkout' => 'Checkout',
     'contact us' => 'Contact Us',
+    'all category'=>'All Category',
 
     // base blade
     'my account' => 'My Account',

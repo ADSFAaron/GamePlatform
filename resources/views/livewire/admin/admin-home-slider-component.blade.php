@@ -28,6 +28,7 @@
                                 <th>Price</th>
                                 <th>Link</th>
                                 <th>Status</th>
+                                <th>Banner Type</th>
                                 <th>Date</th>
                                 <th>Action</th>
                             </tr>
@@ -44,6 +45,7 @@
                                     <td>{{$slider->price}}</td>
                                     <td>{{$slider->link}}</td>
                                     <td>{{$slider->status == 1? 'Active':'Inactive'}}</td>
+                                    <td>{{$slider->banner_type}}</td>
                                     <td>{{$slider->created_at}}</td>
                                     <td>
                                         <a href="{{route('admin.edithomeslider',['slider_id'=>$slider->id])}}"><i

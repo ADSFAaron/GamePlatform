@@ -8,6 +8,7 @@ return [
     'cart' => '購物車',
     'checkout' => '結帳',
     'contact us' => '聯絡我們',
+    'all category'=>'全部分類',
 
     // base blade
     'my account' => '帳號',
