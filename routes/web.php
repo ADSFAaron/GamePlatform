@@ -48,6 +48,9 @@ use App\Http\Livewire\Admin\AdminContactComponent;
 //    return view('welcome');
 //});
 
+// Language Switch
+Route::get('locale/{locale}', 'App\Http\Controllers\LocaleController@switchLocale')->name('locale.set');
+
 // Home Page
 Route::get('/', GamePlatform::class);
 

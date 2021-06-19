@@ -73,45 +73,42 @@
                                     @if(Auth::user()->utype === 'ADM')
                                         {{-- ADMIN--}}
                                         <li class="menu-item menu-item-has-children parent">
-                                            <a title="My Account" href="#">My Account
+                                            <a title="My Account" href="#">{{__('string.my account')}}
                                                 ({{Auth::user()->name}})<i
                                                     class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="submenu curency">
                                                 <li class="menu-item">
                                                     <a title="Dashboard"
-                                                       href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                                       href="{{ route('admin.dashboard') }}">{{__('string.dashboard')}}</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a title="All Order" href="{{route('admin.orders')}}">All Orders</a>
+                                                    <a title="All Order" href="{{route('admin.orders')}}">{{__('string.all orders')}}</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a title="Products" href="{{route('admin.products')}}">All
-                                                        Products</a>
+                                                    <a title="Products" href="{{route('admin.products')}}">{{__('string.all products')}}</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a title="Categories" href="{{route('admin.categories')}}">Categories</a>
+                                                    <a title="Categories" href="{{route('admin.categories')}}">{{__('string.categories')}}</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a title="Manage Home Slider" href="{{route('admin.homeslider')}}">Manage
-                                                        Home Slider</a>
+                                                    <a title="Manage Home Slider" href="{{route('admin.homeslider')}}">{{__('string.manage home slider')}}</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Manage Home Categories"
-                                                       href="{{route('admin.homecategories')}}">Manage
-                                                        Home Categories</a>
+                                                       href="{{route('admin.homecategories')}}">{{__('string.manage home categories')}}</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Sale Setting"
-                                                       href="{{route('admin.sale')}}">Sale Setting</a>
+                                                       href="{{route('admin.sale')}}">{{__('string.sale setting')}}</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Contact Messages"
-                                                       href="{{route('admin.contact')}}">Contact Messages</a>
+                                                       href="{{route('admin.contact')}}">{{__('string.contact messages')}}</a>
                                                 </li>
 
                                                 <li class="menu-item">
                                                     <a title="Logout" href="{{ route('logout') }}"
-                                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{__('string.logout')}}</a>
                                                 </li>
                                                 <form id="logout-form" method="POST" action="{{ route('logout') }}">
                                                     @csrf
@@ -121,25 +118,25 @@
                                     @else
                                         {{-- NORMAL USER --}}
                                         <li class="menu-item menu-item-has-children parent">
-                                            <a title="My Account" href="#">My Account
+                                            <a title="My Account" href="#">{{__('string.my account')}}
                                                 ({{Auth::user()->name}})<i
                                                     class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="submenu curency">
                                                 <li class="menu-item">
                                                     <a title="Dashboard"
-                                                       href="{{ route('user.dashboard') }}">Dashboard</a>
+                                                       href="{{ route('user.dashboard') }}">{{__('string.dashboard')}}</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="My Orders"
-                                                       href="{{ route('user.orders') }}">My Orders</a>
+                                                       href="{{ route('user.orders') }}">{{__('string.my orders')}}</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Change Password"
-                                                       href="{{ route('user.changepassword') }}">Change Password</a>
+                                                       href="{{ route('user.changepassword') }}">{{__('string.change password')}}</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Logout" href="{{ route('logout') }}"
-                                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{__('string.logout')}}</a>
                                                 </li>
                                                 <form id="logout-form" method="POST" action="{{ route('logout') }}">
                                                     @csrf
@@ -150,11 +147,71 @@
                                 @else
                                     {{-- Guest or Not Login --}}
                                     <li class="menu-item"><a title="Register or Login"
-                                                             href="{{route('login')}}">Login</a></li>
-                                    <li class="menu-item"><a title="Register or Login" href="{{route('register')}}">Register</a>
+                                                             href="{{route('login')}}">{{__('string.login')}}</a></li>
+                                    <li class="menu-item"><a title="Register or Login" href="{{route('register')}}">{{__('string.register')}}</a>
                                     </li>
                                 @endif
                             @endif
+                            <li class="menu-item lang-menu menu-item-has-children parent">
+                                @php
+                                    $lang = array(
+                                        'en'=>'English',
+                                        'zh-tw'=>'繁體中文',
+                                    ) ;
+                                    $langImages = array(
+                                        'en'=>'https://lipis.github.io/flag-icon-css/flags/4x3/us.svg',
+                                        'zh-tw'=>'https://lipis.github.io/flag-icon-css/flags/4x3/tw.svg'
+                                    );
+
+                                    //print_r($lang);
+                                    //print_r($langImages);
+
+                                    if (array_key_exists(app()->getLocale(),$lang))
+                                    {
+                                        echo "<a title=".$lang[app()->getLocale()]." href='#'><span class='img label-before'><img
+                                            src=".$langImages[app()->getLocale()]." width='20'
+                                            alt='lang-menu'></span>".$lang[app()->getLocale()]."<i class='fa fa-angle-down'
+                                                                           aria-hidden='true'></i></a>";
+                                    }
+
+                                    echo '<ul class="submenu lang">';
+                                    foreach ($lang as $langKey => $langValue)
+                                    {
+                                        if($langKey != app()->getLocale())
+                                        {
+                                            echo '<li class="menu-item"><a title="english"
+                                                             href='.route('locale.set',$langKey).'><span
+                                                class="img label-before"><img
+                                                    src="'.$langImages[$langKey].'"
+                                                    width="20" alt="lang-hun"></span>'.$langValue.'</a></li>';
+
+                                        }
+
+                                    }
+
+                                    echo '</ul>';
+                                @endphp
+                                {{--                                <a title="English" href="#"><span class="img label-before"><img--}}
+                                {{--                                            src="https://lipis.github.io/flag-icon-css/flags/4x3/us.svg" width="20"--}}
+                                {{--                                            alt="lang-en"></span>English<i class="fa fa-angle-down"--}}
+                                {{--                                                                           aria-hidden="true"></i></a>--}}
+                                {{--                                <ul class="submenu lang">--}}
+                                {{--                                    <li class="menu-item"><a title="english"--}}
+                                {{--                                                             href="{{route('locale.set','zh-tw')}}"><span--}}
+                                {{--                                                class="img label-before"><img--}}
+                                {{--                                                    src="https://lipis.github.io/flag-icon-css/flags/4x3/tw.svg"--}}
+                                {{--                                                    width="20" alt="lang-hun"></span>Trad Chinese</a></li>--}}
+                                {{--                                    <li class="menu-item"><a title="german" href="{{route('locale.set','en')}}"><span--}}
+                                {{--                                                class="img label-before"><img src="assets/images/lang-ger.png"--}}
+                                {{--                                                                              alt="lang-ger"></span>English</a></li>--}}
+                                {{--                                    <li class="menu-item"><a title="french" href="#"><span class="img label-before"><img--}}
+                                {{--                                                    src="assets/images/lang-fra.png" alt="lang-fre"></span>French</a>--}}
+                                {{--                                    </li>--}}
+                                {{--                                    <li class="menu-item"><a title="canada" href="#"><span class="img label-before"><img--}}
+                                {{--                                                    src="assets/images/lang-can.png" alt="lang-can"></span>Canada</a>--}}
+                                {{--                                    </li>--}}
+                                {{--                                </ul>--}}
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -222,16 +279,16 @@
                             {{-- <a href="about-us.html" class="link-term mercado-item-title">About Us</a>--}}
                             {{-- </li>--}}
                             <li class="menu-item">
-                                <a href="/shop" class="link-term mercado-item-title">Shop</a>
+                                <a href="/shop" class="link-term mercado-item-title">{{__('string.shop')}}</a>
                             </li>
                             <li class="menu-item">
-                                <a href="/cart" class="link-term mercado-item-title">Cart</a>
+                                <a href="/cart" class="link-term mercado-item-title">{{__('string.cart')}}</a>
                             </li>
                             <li class="menu-item">
-                                <a href="/checkout" class="link-term mercado-item-title">Checkout</a>
+                                <a href="/checkout" class="link-term mercado-item-title">{{__('string.checkout')}}</a>
                             </li>
                             <li class="menu-item">
-                                <a href="/contact-us" class="link-term mercado-item-title">Contact Us</a>
+                                <a href="/contact-us" class="link-term mercado-item-title">{{__('string.contact us')}}</a>
                             </li>
                         </ul>
                     </div>

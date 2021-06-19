@@ -63,7 +63,7 @@
         <!--On Sale-->
         @if($sproducts->count() > 0 && $sale->status == 1 && $sale->sale_date > \Carbon\Carbon::now())
             <div class="wrap-show-advance-info-box style-1 has-countdown">
-                <h3 class="title-box">On Sale</h3>
+                <h3 class="title-box">{{__('string.on sale')}}</h3>
                 <div class="wrap-countdown mercado-countdown"
                      data-expire="{{Carbon\Carbon::parse($sale->sale_date)->format('Y/m/d h:m:s')}}"></div>
                 <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5"
@@ -100,7 +100,7 @@
 
     <!--Latest Products-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box">Latest Products</h3>
+            <h3 class="title-box">{{__('string.latest products')}}</h3>
             <div class="wrap-top-banner">
                 {{-- <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset('assets/images/digital-electronic-banner.jpg') }}" width="1170"
@@ -150,7 +150,7 @@
 
         <!--Product Categories-->
         <div class="wrap-show-advance-info-box style-1">
-            <h3 class="title-box">Product Categories</h3>
+            <h3 class="title-box">{{__('string.product categories')}}</h3>
             <div class="wrap-top-banner">
                 <a href="#" class="link-banner banner-effect-2">
                     <figure><img src="{{ asset('assets/images/fashion-accesories-banner.jpg') }}" width="1170"
