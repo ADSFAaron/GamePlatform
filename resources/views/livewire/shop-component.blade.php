@@ -4,8 +4,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Shop page</span></li>
+                <li class="item-link"><a href="/" class="link">{{__('string.home')}}</a></li>
+                <li class="item-link"><span>{{__('string.Shop page')}}</span></li>
             </ul>
         </div>
         <div class="row">
@@ -20,7 +20,7 @@
 
                 <div class="wrap-shop-control">
 
-                    <h1 class="shop-title">Shop page</h1>
+                    <h1 class="shop-title">{{__('string.Shop page')}}</h1>
 
                     <div class="wrap-right">
 
@@ -79,14 +79,12 @@
                                         <div class="wrap-price"><span
                                                 class="product-price">NTD {{$product->regular_price}}</span></div>
                                         <a href="#" class="btn add-to-cart"
-                                           wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add
-                                            To Cart</a>
+                                           wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">{{__('string.addtocart')}}</a>
                                     </div>
                                 </div>
                             </li>
                         @endforeach
                     </ul>
-
                 </div>
 
                 <div class="wrap-pagination-info">
@@ -143,7 +141,7 @@
                 {{--                </div><!-- brand widget-->--}}
 
                 <div class="widget mercado-widget filter-widget price-filter">
-                    <h2 class="widget-title">Price &nbsp;&nbsp;<span
+                    <h2 class="widget-title">{{__('string.Price')}} &nbsp;&nbsp;<span
                             class="text-info">NTD {{$min_price}} - {{$max_price}}</span>
                     </h2>
                     <div class="widget-content">

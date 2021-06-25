@@ -14,8 +14,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>detail</span></li>
+                <li class="item-link"><a href="/" class="link">{{__('string.home')}}</a></li>
+                <li class="item-link"><span>{{__('string.product detail')}}</span></li>
             </ul>
         </div>
         <div class="row">
@@ -29,6 +29,17 @@
                                     <img src="{{ asset('assets/images/products') }}/{{$product->image}}"
                                          alt="{{$product->name}}"/>
                                 </li>
+                                @php
+                                    $images = explode(",",$product->images);
+                                @endphp
+                                @foreach($images as $image)
+                                    @if($image)
+                                        <li data-thumb="{{ asset('assets/images/products') }}/{{$image}}">
+                                            <img src="{{ asset('assets/images/products') }}/{{$image}}"
+                                                 alt="{{$product->name}}"/>
+                                        </li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -71,10 +82,10 @@
                             </div>
                         @endif
                         <div class="stock-info in-stock">
-                            <p class="availability">Availability: <b>{{$product->stock_status}}</b></p>
+                            <p class="availability">{{__('string.availability')}}: <b>{{$product->stock_status}}</b></p>
                         </div>
                         <div class="quantity">
-                            <span>Quantity:</span>
+                            <span>{{__('string.Amount')}}:</span>
                             <div class="quantity-input">
                                 <input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*"
                                        wire:model="qty">
@@ -86,12 +97,10 @@
                         <div class="wrap-butons">
                             @if($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > \Carbon\Carbon::now())
                                 <a href="#" class="btn add-to-cart"
-                                   wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})">Add
-                                    to Cart</a>
+                                   wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})">{{__('string.addtocart')}}</a>
                             @else
                                 <a href="#" class="btn add-to-cart"
-                                   wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add
-                                    to Cart</a>
+                                   wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">{{__('string.addtocart')}}</a>
                             @endif
                             {{--                            <div class="wrap-btn">--}}
                             {{--                                <a href="#" class="btn btn-compare">Add Compare</a>--}}
@@ -101,9 +110,10 @@
                     </div>
                     <div class="advance-info">
                         <div class="tab-control normal">
-                            <a href="#description" class="tab-control-item active">description</a>
-                            <a href="#add_infomation" class="tab-control-item">Addtional Infomation</a>
-                            <a href="#review" class="tab-control-item">Reviews</a>
+                            <a href="#description" class="tab-control-item active">{{__('string.description')}}</a>
+                            <a href="#add_infomation"
+                               class="tab-control-item">{{__('string.additional information')}}</a>
+                            <a href="#review" class="tab-control-item">{{__('string.reviews')}}</a>
                         </div>
                         <div class="tab-contents">
                             <div class="tab-content-item active" id="description">
@@ -113,16 +123,40 @@
                                 <table class="shop_attributes">
                                     <tbody>
                                     <tr>
-                                        <th>Weight</th>
+                                        <th>{{__('string.Purchase Date')}}</th>
                                         <td class="product_weight">1 kg</td>
                                     </tr>
                                     <tr>
-                                        <th>Dimensions</th>
+                                        <th>{{__('string.Support Platform')}}</th>
+                                        <td><p></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{__('string.Support Language')}}</th>
+                                        <td><p></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{__('string.Brand')}}</th>
+                                        <td><p></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{__('string.Dimension')}}</th>
                                         <td class="product_dimensions">12 x 15 x 23 cm</td>
                                     </tr>
                                     <tr>
-                                        <th>Color</th>
-                                        <td><p>Black, Blue, Grey, Violet, Yellow</p></td>
+                                        <th>{{__('string.Weight')}}</th>
+                                        <td><p></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{__('string.Amount')}}</th>
+                                        <td><p></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{__('string.Game State')}}</th>
+                                        <td><p></p></td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{__('string.esrb')}}</th>
+                                        <td><p></p></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -242,7 +276,7 @@
                 {{--                </div><!-- Categories widget-->--}}
 
                 <div class="widget mercado-widget widget-product">
-                    <h2 class="widget-title">Popular Products</h2>
+                    <h2 class="widget-title">{{__('string.popular product')}}</h2>
                     <div class="widget-content">
                         <ul class="products">
                             @foreach($popular_products as $p_product)
@@ -275,7 +309,7 @@
 
             <div class="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="wrap-show-advance-info-box style-1 box-in-site">
-                    <h3 class="title-box">Related Products</h3>
+                    <h3 class="title-box">{{__('string.related product')}}</h3>
                     <div class="wrap-products">
                         <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
                              data-loop="false" data-nav="true" data-dots="false"
