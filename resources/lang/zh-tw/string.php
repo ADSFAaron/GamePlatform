@@ -23,6 +23,7 @@ return [
     'logout' => '登出',
     'my orders' => '我的訂單',
     'change password' => '更改密碼',
+    'setting' => '設定',
 
     // item link bar
     'home' => '首頁',

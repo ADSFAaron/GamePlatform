@@ -23,6 +23,7 @@ return [
     'logout' => 'Logout',
     'my orders' => 'My Orders',
     'change password' => 'Change Password',
+    'setting' => 'Settings',
 
     // item link bar
     'home' => 'Home',

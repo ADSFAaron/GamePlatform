@@ -101,4 +101,5 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/home-categories', AdminHomeCategoryComponent::class)->name('admin.homecategories');
     Route::get('/admin/sale', AdminSaleComponent::class)->name('admin.sale');
     Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
+    Route::get('/admin/settings', \App\Http\Livewire\Admin\AdminSettingComponent::class)->name('admin.settings');
 });
