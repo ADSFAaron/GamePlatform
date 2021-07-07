@@ -4,8 +4,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Product Categories</span></li>
+                <li class="item-link"><a href="/" class="link">{{__('string.home')}}</a></li>
+                <li class="item-link"><span>{{__('string.categories')}}</span></li>
                 <li class="item-link"><span>{{$category_name}}</span></li>
             </ul>
         </div>
@@ -46,10 +46,10 @@
                             </select>
                         </div>
 
-                        <div class="change-display-mode">
-                            <a href="#" class="grid-mode display-mode active"><i class="fa fa-th"></i>Grid</a>
-                            <a href="list.html" class="list-mode display-mode"><i class="fa fa-th-list"></i>List</a>
-                        </div>
+{{--                        <div class="change-display-mode">--}}
+{{--                            <a href="#" class="grid-mode display-mode active"><i class="fa fa-th"></i>Grid</a>--}}
+{{--                            <a href="list.html" class="list-mode display-mode"><i class="fa fa-th-list"></i>List</a>--}}
+{{--                        </div>--}}
 
                     </div>
 
@@ -71,7 +71,7 @@
                                     <div class="product-info">
                                         <a href="{{ route('product.details',['slug'=>$product->slug]) }}" class="product-name"><span>{{$product->name}}</span></a>
                                         <div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span></div>
-                                        <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add To Cart</a>
+                                        <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">{{__('string.addtocart')}}</a>
                                     </div>
                                 </div>
                             </li>
@@ -94,7 +94,7 @@
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                 <div class="widget mercado-widget categories-widget">
-                    <h2 class="widget-title">All Categories</h2>
+                    <h2 class="widget-title">{{__('string.all category')}}</h2>
                     <div class="widget-content">
                         <ul class="list-category">
                             @foreach ($categories as $category)

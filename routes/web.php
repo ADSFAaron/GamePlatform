@@ -11,6 +11,7 @@ use \App\Http\Livewire\CheckoutComponent;
 use \App\Http\Livewire\DetailsComponent;
 use \App\Http\Livewire\SearchComponent;
 use \App\Http\Livewire\ThankyouComponent;
+use \App\Http\Livewire\ContactComponent;
 use \App\Http\Livewire\User\UserOrdersComponent;
 use \App\Http\Livewire\User\UserOrderDetailsComponent;
 use \App\Http\Livewire\Admin\AdminOrderComponent;
@@ -31,6 +32,7 @@ use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\Admin\AdminHomeCategoryComponent;
 use App\Http\Livewire\Admin\AdminSaleComponent;
 use App\Http\Livewire\Admin\AdminContactComponent;
+use \App\Http\Livewire\Admin\AdminSettingComponent;
 
 
 /*
@@ -69,7 +71,7 @@ Route::get('/search', SearchComponent::class)->name('product.search');
 
 Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 
-Route::get('/contact-us', \App\Http\Livewire\ContactComponent::class)->name('contact');
+Route::get('/contact-us', ContactComponent::class)->name('contact');
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');
@@ -101,5 +103,5 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/home-categories', AdminHomeCategoryComponent::class)->name('admin.homecategories');
     Route::get('/admin/sale', AdminSaleComponent::class)->name('admin.sale');
     Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
-    Route::get('/admin/settings', \App\Http\Livewire\Admin\AdminSettingComponent::class)->name('admin.settings');
+    Route::get('/admin/settings', AdminSettingComponent::class)->name('admin.settings');
 });

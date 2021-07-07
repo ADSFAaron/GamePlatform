@@ -4,8 +4,8 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="/" class="link">home</a></li>
-                <li class="item-link"><span>Search</span></li>
+                <li class="item-link"><a href="/" class="link">{{__('string.home')}}</a></li>
+                <li class="item-link"><span>{{__('string.searchhere')}}</span></li>
             </ul>
         </div>
         <div class="row">
@@ -75,8 +75,7 @@
                                             <div class="wrap-price"><span
                                                     class="product-price">{{$product->regular_price}}</span></div>
                                             <a href="#" class="btn add-to-cart"
-                                               wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add
-                                                To Cart</a>
+                                               wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">{{__('string.addtocart')}}</a>
                                         </div>
                                     </div>
                                 </li>
