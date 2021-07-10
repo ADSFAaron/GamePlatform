@@ -79,6 +79,22 @@
 - 可以選擇網頁語言~
 - Admin 可以調整主頁 Banner 要哪種樣式
 
+## 2021-06-25
+- Detail Page 可以顯示多個商品頁
+- Detail Page、Shop Page 可以套用多國語言
+- 增加商品欄位(DB還沒)
+
+## 2021-06-26
+- Footer 加入
+- Admin 增加設定
+- Contact 頁面可以動態載入管理員資料
+
+## 2021-07-10
+- Fix if no data, home page will error bug
+- Add Forgot Password Process
+- Add Admin Dashboard Content
+- 修改 Detail Page 顯示圖片 bug
+- 修改登入、註冊頁面 顯示標題問題
 
 
 # 重要檔案
@@ -142,6 +158,12 @@ php artisan make:model <MODEL 名稱> -m
 > Be like water.
 > 
 > Stop trying to control.
+> 
+> If your happiness depends on money, you will never be happy with yourself.
+> 
+> The Master doesn't talk, he acts.
+> 
+> To attain knowledge, add things every day; To attain wisdom, subtract things every day.
 > 
 
 
