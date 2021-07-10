@@ -52,20 +52,22 @@
                             <h3 class="item-header">Contact Details</h3>
                             <div class="item-content">
                                 <div class="wrap-contact-detail">
-                                    <ul>
-                                        <li>
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <p class="contact-txt">{{$setting->address}}</p>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <p class="contact-txt">{{$setting->phone}}</p>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            <p class="contact-txt">{{$setting->email}}</p>
-                                        </li>
-                                    </ul>
+                                    @if($setting!=null)
+                                        <ul>
+                                            <li>
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                <p class="contact-txt">{{$setting->address}}</p>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                                <p class="contact-txt">{{$setting->phone}}</p>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                <p class="contact-txt">{{$setting->email}}</p>
+                                            </li>
+                                        </ul>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -78,7 +80,9 @@
                             <div class="item-content">
                                 <div class="wrap-hotline-footer">
                                     <span class="desc">Call Us toll Free</span>
-                                    <b class="phone-number">{{$setting->phone2}}</b>
+                                    @if($setting!=null)
+                                        <b class="phone-number">{{$setting->phone2}}</b>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -116,7 +120,7 @@
                                 </div>
                             </div>
                             <div class="wrap-footer-item twin-item">
-                                <h3 class="item-header">Infomation</h3>
+                                <h3 class="item-header">Information</h3>
                                 <div class="item-content">
                                     <div class="wrap-vertical-nav">
                                         <ul>
@@ -141,7 +145,7 @@
                             <h3 class="item-header">We Using Safe Payments:</h3>
                             <div class="item-content">
                                 <div class="wrap-list-item wrap-gallery">
-                                    <img src="{{asset('assets/images/payment.png')}}" style="max-width: 260px;">
+                                    <img src="{{asset('assets/images/payment.png')}}" style="max-width: 260px;" alt="">
                                 </div>
                             </div>
                         </div>
@@ -152,24 +156,29 @@
                             <h3 class="item-header">Social network</h3>
                             <div class="item-content">
                                 <div class="wrap-list-item social-network">
-                                    <ul>
-                                        <li><a href="{{$setting->twitter}}" class="link-to-item" title="twitter"><i
-                                                    class="fa fa-twitter"
-                                                    aria-hidden="true"></i></a>
-                                        </li>
-                                        <li><a href="{{$setting->facebook}}" class="link-to-item" title="facebook"><i
-                                                    class="fa fa-facebook"
-                                                    aria-hidden="true"></i></a>
-                                        </li>
-                                        <li><a href="{{$setting->pinterest}}" class="link-to-item" title="pinterest"><i
-                                                    class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li><a href="{{$setting->instagram}}" class="link-to-item" title="instagram"><i
-                                                    class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                        <li><a href="{{$setting->youtube}}" class="link-to-item" title="vimeo"><i
-                                                    class="fa fa-vimeo"
-                                                    aria-hidden="true"></i></a>
-                                        </li>
-                                    </ul>
+                                    @if($setting!=null)
+                                        <ul>
+                                            <li><a href="{{$setting->twitter}}" class="link-to-item" title="twitter"><i
+                                                        class="fa fa-twitter"
+                                                        aria-hidden="true"></i></a>
+                                            </li>
+                                            <li><a href="{{$setting->facebook}}" class="link-to-item"
+                                                   title="facebook"><i
+                                                        class="fa fa-facebook"
+                                                        aria-hidden="true"></i></a>
+                                            </li>
+                                            <li><a href="{{$setting->pinterest}}" class="link-to-item"
+                                                   title="pinterest"><i
+                                                        class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                            <li><a href="{{$setting->instagram}}" class="link-to-item"
+                                                   title="instagram"><i
+                                                        class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                            <li><a href="{{$setting->youtube}}" class="link-to-item" title="vimeo"><i
+                                                        class="fa fa-vimeo"
+                                                        aria-hidden="true"></i></a>
+                                            </li>
+                                        </ul>
+                                    @endif
                                 </div>
                             </div>
                         </div>
