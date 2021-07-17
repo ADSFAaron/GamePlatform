@@ -96,6 +96,12 @@
 - 修改 Detail Page 顯示圖片 bug
 - 修改登入、註冊頁面 顯示標題問題
 
+## 2021-07-15
+- 修改刪除產品時，產品照片不會一起刪除
+
+## 2021-07-17
+- Admin can Edit Product Gallery
+
 
 # 重要檔案
 1. GamePlatform\.env：管理整個專案的網頁位置和 DB 的資訊
@@ -165,6 +171,8 @@ php artisan make:model <MODEL 名稱> -m
 > 
 > To attain knowledge, add things every day; To attain wisdom, subtract things every day.
 > 
+> Nothing in the world is as soft and yielding as water.
+> 
 
 
 ## JetStream 密碼加密方式
@@ -174,3 +182,32 @@ php artisan make:model <MODEL 名稱> -m
 1. composer install
 2. php artisan migrate
 3. php artisan key:generate
+
+## Deploy 到 AZURE 問題
+因為 azure 的 composer 會和 livewire 有 conflict，所以要在 public.config 中修改成這樣
+```
+<configuration>
+  <system.webServer>
+    <rewrite>
+      <rules>
+        <clear/>
+        <rule name="Imported Rule 1" stopProcessing="true">
+          <match url="^(.*)/$" ignoreCase="false" />
+          <conditions>
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" ignoreCase="false" negate="true" />
+          </conditions>
+          <action type="Redirect" redirectType="Permanent" url="/{R:1}" />
+        </rule>
+        <rule name="Imported Rule 2" stopProcessing="true">
+          <match url="^" ignoreCase="false" />
+          <conditions>
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" ignoreCase="false" negate="true" />
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" ignoreCase="false" negate="true" />
+          </conditions>
+          <action type="Rewrite" url="index.php" />
+        </rule>
+      </rules>
+    </rewrite>
+  </system.webServer>
+</configuration>
+```
