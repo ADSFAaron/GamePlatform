@@ -47,7 +47,8 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Short Description</label>
                                 <div class="col-md-4" wire:ignore>
-                                        <textarea class="form-control" id="short_description" placeholder="Short Description"
+                                        <textarea class="form-control" id="short_description"
+                                                  placeholder="Short Description"
                                                   wire:model="short_description" required autofocus></textarea>
                                     @error('short_description')
                                     <p class="text-danger">{{$message}}</p>
@@ -144,6 +145,31 @@
                                         <img src="{{$newimage->temporaryUrl()}}" width="120"/>
                                     @else
                                         <img src="{{asset('assets/images/products')}}/{{$image}}" width="120"/>
+                                    @endif
+                                    @error('newimage')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Product Gallery</label>
+                                <div class="col-md-4">
+                                    <input type="file" class="input-file" wire:model="newimages" multiple/>
+                                    @if ($newimages)
+                                        @foreach($newimages as $newimage)
+                                            @if($newimage)
+                                                <img src="{{$newimage->temporaryUrl()}}" width="120"/>
+                                            @endif
+                                        @endforeach
+
+                                    @else
+                                        @foreach($images as $image)
+                                            @if($image)
+                                                <img src="{{asset('assets/images/products')}}/{{$image}}" width="120"/>
+                                            @endif
+                                        @endforeach
+
                                     @endif
                                     @error('newimage')
                                     <p class="text-danger">{{$message}}</p>
